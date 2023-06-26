@@ -3,7 +3,8 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 function ENT:Use( ply )
-    if ( not ply:IsPlayer() or ply:GetNWBool( "SrbDisguise.isDisguised", false ) ) then return end
+    if ( not ply:IsPlayer() ) then return end
+    if ( ply:GetNWBool( "SrbDisguise.isDisguised", false ) ) then ply:ChatPrint("Vous êtes déjà déguisé!") return end
     ply:SetNWBool( "SrbDisguise.isDisguised", true )
 
     -- Cache player model
